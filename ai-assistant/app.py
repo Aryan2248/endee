@@ -5,16 +5,11 @@ import ollama
 import time
 from endee_db import SimpleEndeeDB
 
-# ---------------------------
-# Professional Page Branding
-# ---------------------------
 st.set_page_config(
     page_title="Your Assistant | Endee AI",
     page_icon="🧠",
     layout="wide"
 )
-
-# Custom CSS for a sleek look
 st.markdown("""
     <style>
     .main { background-color: #0e1117; }
@@ -24,9 +19,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# ---------------------------
-# Logic Initialization
-# ---------------------------
 if "db" not in st.session_state:
     st.session_state.db = SimpleEndeeDB()
 if "processed_files" not in st.session_state:
@@ -46,9 +38,7 @@ def split_text(text, chunk_size=150):
     words = text.split()
     return [" ".join(words[i:i+chunk_size]) for i in range(0, len(words), chunk_size)]
 
-# ---------------------------
-# Sidebar UI (Control Panel)
-# ---------------------------
+
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/artificial-intelligence.png", width=80)
     st.title("Your Assistant")
@@ -74,9 +64,8 @@ with st.sidebar:
     st.markdown("---")
     st.info("💡 **Tip:** Ask specific questions about your uploaded documents for better RAG accuracy.")
 
-# ---------------------------
 # Main Dashboard
-# ---------------------------
+
 col1, col2 = st.columns([2, 1])
 
 with col1:
