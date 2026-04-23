@@ -7,7 +7,7 @@ class SimpleEndeeDB:
 
     @property
     def data(self):
-        # Keep compatibility with app.py's len(st.session_state.db.data)
+        
         return self.texts
 
     def add(self, text, embedding):
@@ -23,16 +23,15 @@ class SimpleEndeeDB:
         if self.embeddings is None or len(self.texts) == 0:
             return []
 
-        # Vectorized cosine similarity — computes ALL scores in one shot
+        
         q = np.array(query_embedding, dtype=np.float32)
         q_norm = q / (np.linalg.norm(q) + 1e-8)
 
         norms = np.linalg.norm(self.embeddings, axis=1, keepdims=True) + 1e-8
         normed = self.embeddings / norms
 
-        scores = normed @ q_norm  # dot product across all vectors at once
+        scores = normed @ q_norm  
 
-        # Get top_k indices without full sort (much faster for large DBs)
         top_k = min(top_k, len(self.texts))
         top_indices = np.argpartition(scores, -top_k)[-top_k:]
         top_indices = top_indices[np.argsort(scores[top_indices])[::-1]]

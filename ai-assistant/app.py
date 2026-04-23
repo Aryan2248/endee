@@ -26,9 +26,6 @@ html, body, .main, [data-testid="stAppViewContainer"] {
     font-family: 'Syne', sans-serif;
 }
 
-/* ══════════════════════════════════
-   SIDEBAR
-══════════════════════════════════ */
 section[data-testid="stSidebar"] {
     background: linear-gradient(180deg, #131929 0%, #0f1520 100%) !important;
     border-right: 1px solid #1f2d42 !important;
@@ -254,9 +251,6 @@ section[data-testid="stSidebar"] > div:first-child {
     flex-shrink: 0;
 }
 
-/* ══════════════════════════════════
-   MAIN AREA
-══════════════════════════════════ */
 
 /* Buttons */
 .stButton button {
@@ -317,9 +311,7 @@ section[data-testid="stSidebar"] > div:first-child {
     margin-bottom: 22px;
 }
 
-/* ══════════════════════════════════
-   CHAT BUBBLES
-══════════════════════════════════ */
+
 
 [data-testid="stChatMessage"] {
     background: transparent !important;
@@ -471,9 +463,7 @@ section[data-testid="stSidebar"] > div:first-child {
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------------------
-# Session State
-# ---------------------------
+
 if "db" not in st.session_state:
     st.session_state.db = SimpleEndeeDB()
 if "processed_files" not in st.session_state:
@@ -483,9 +473,7 @@ if "messages" not in st.session_state:
 if "last_query" not in st.session_state:
     st.session_state.last_query = None
 
-# ---------------------------
-# Helpers
-# ---------------------------
+
 @st.cache_data(show_spinner=False)
 def get_embedding(text):
     try:
@@ -526,9 +514,7 @@ def render_message(role, content):
         </div>
         """, unsafe_allow_html=True)
 
-# ---------------------------
-# SIDEBAR
-# ---------------------------
+
 with st.sidebar:
 
     st.markdown("""
@@ -607,9 +593,7 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-# ---------------------------
-# MAIN AREA
-# ---------------------------
+
 st.markdown('<div class="page-title">◈ Endee AI · Chat Interface</div>', unsafe_allow_html=True)
 st.markdown('<div class="page-heading">Ask your <span>documents</span> anything.</div>', unsafe_allow_html=True)
 
