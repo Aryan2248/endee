@@ -93,5 +93,6 @@ I implemented a 150-word chunk limit specifically to handle the status code: 500
 
 👨‍💻 Author
 Aryan Yadav CSE-1 | B.Tech (CSE) 2027
+Uttaranchal Unviersity
 
 Specialization: AI & Full-Stack Development
